@@ -8,6 +8,6 @@ def driver():
     # options.headless = True
     driver = webdriver.Firefox()
     driver.maximize_window()
-    driver.implicitly_wait(10)
+    # driver.implicitly_wait(2)
     yield driver
     driver.quit()
