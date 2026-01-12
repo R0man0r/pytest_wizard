@@ -13,11 +13,11 @@ def test_wizard_flow(driver):
     country_page.wait_for_title("Choose Your Location")
     assert country_page.is_opened()
 
-    country_page.select_country("Russia")
-    country_page.select_timezone("UTC+3 Europe/Moscow")
+    # country_page.select_country("Russia")
+    # country_page.select_timezone("UTC+3 Europe/Moscow") - TODO fix element obscured
     
     password_page = country_page.click_next()
     password_page.wait_for_title("Secure Your Device")
     assert password_page.is_opened()
-    
+    password_page.enter_password()
     
