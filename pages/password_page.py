@@ -4,17 +4,30 @@ from pages.base_wizard_page import BaseWizardPage
 from selenium.webdriver.support.ui import WebDriverWait
 
 class PasswordPage(BaseWizardPage):
-    PATH = "/password"
+    
+    PATH = "password"
+    NEXT_BUTTON = (By.XPATH, "//button[contains(., 'Next')]")
+
+    def open(self):
+        self.driver.get(self.BASE_URL + self.PATH)
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
+        return self
 
     def is_opened(self):
         return self.PATH in self.driver.current_url
     
-    PASSWORD_FIELD_XPATH = "/html/body/app-root/isw-layout/mat-card/mat-card-content/isw-password/div/div/ndw-user-password-input/div/mat-form-field/div[1]"
+    PASSWORD_FIELD = (By.XPATH, "//input[@type='password']")
 
-    def enter_password(self):
-        input_field = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, self.PASSWORD_FIELD_XPATH))
+    def enter_password(self, password: str):
+        field = self.wait.until(
+            EC.element_to_be_clickable(self.PASSWORD_FIELD)
         )
-        input_field.click()
-        # input_field.clear()
-        input_field.send_keys("admin1234")
+        field.clear()
+        field.send_keys(password)
+        return self
+    
+    def click_next(self):
+        self.driver.find_element(*self.NEXT_BUTTON).click()
+        from .mode_page import ModePage
+        return ModePage(self.driver)
+        

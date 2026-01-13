@@ -1,5 +1,6 @@
 from pages.welcome_page import WelcomePage
 from pages.country_page import CountryPage
+from pages.password_page import PasswordPage
 
 def test_wizard_flow(driver):
 
@@ -19,5 +20,7 @@ def test_wizard_flow(driver):
     password_page = country_page.click_next()
     password_page.wait_for_title("Secure Your Device")
     assert password_page.is_opened()
-    password_page.enter_password()
+    password_page.enter_password("admin1234")
+
+    
     

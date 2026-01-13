@@ -4,7 +4,7 @@ from pages.base_wizard_page import BaseWizardPage
 
 class WelcomePage(BaseWizardPage):
     
-    PATH = "/welcome"
+    PATH = "welcome"
     START_BUTTON = (By.XPATH, "//button[contains(., 'Start')]")
 
     def open(self):
