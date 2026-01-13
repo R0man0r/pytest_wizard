@@ -6,6 +6,7 @@ class BaseWizardPage:
     BASE_URL = "http://192.168.1.1/wizards/initial-setup/"
     NEXT_BUTTON = (By.XPATH, "//button[contains(., 'Next')]")
     TITLE = (By.XPATH, "//mat-card-title")
+    PATH = ""
 
     def __init__(self, driver, timeout=10):
         self.driver = driver
@@ -22,3 +23,6 @@ class BaseWizardPage:
 
     def click_next_default(self):
         self.driver.find_element(*self.NEXT_BUTTON).click()
+
+    def is_opened(self):
+        return self.PATH in self.driver.current_url

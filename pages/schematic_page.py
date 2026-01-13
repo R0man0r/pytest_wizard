@@ -12,6 +12,4 @@ class SchematicPage(BaseWizardPage):
         self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         return self 
     
-    def is_opened(self):
-        return self.PATH in self.driver.current_url
     

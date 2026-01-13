@@ -6,15 +6,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 class PasswordPage(BaseWizardPage):
     
     PATH = "password"
-    NEXT_BUTTON = (By.XPATH, "//button[contains(., 'Next')]")
 
     def open(self):
         self.driver.get(self.BASE_URL + self.PATH)
         self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         return self
-
-    def is_opened(self):
-        return self.PATH in self.driver.current_url
     
     PASSWORD_FIELD = (By.XPATH, "//input[@type='password']")
 

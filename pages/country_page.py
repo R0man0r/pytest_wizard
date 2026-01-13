@@ -23,8 +23,6 @@ class CountryPage(BaseWizardPage):
         self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         return self
 
-    def is_opened(self):
-        return self.PATH in self.driver.current_url
     
     def select_country(self, country: str):
         self.wait.until(EC.element_to_be_clickable(self.COUNTRY_XPATH)).click()

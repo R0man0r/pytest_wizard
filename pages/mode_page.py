@@ -12,8 +12,6 @@ class ModePage(BaseWizardPage):
         self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         return self
     
-    def is_opened(self):
-        return self.PATH in self.driver.current_url
     
     def click_router_mode(self):
         self.driver.find_element(*self.RADIO_ROUTER).click()
