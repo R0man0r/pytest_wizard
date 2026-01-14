@@ -9,6 +9,9 @@ from pages.schedule_updates_page import ScheduleUpdatesPage
 from pages.wifi_settings_page import WifiSettingsPage
 from pages.wifi_perf_page import WifiPerfPage
 from pages.extra_segments_page import ExtraSegmentsPage
+from pages.share_data_page import ShareDataPage
+from pages.device_credentials_page import DeviceCredentialsPage
+from pages.finish_setup_page import FinishSetupPage
 
 
 def test_welcome_page(driver):
@@ -82,3 +85,21 @@ def test_extra_segments_page(driver):
     extra_segments_page.wait_for_title("Create Additional Wi-Fi Networks")
     assert extra_segments_page.is_opened()
     extra_segments_page.click_chbox_guests()
+
+def test_share_data_page(driver):
+    share_data_page = ShareDataPage(driver).open()
+    share_data_page.wait_for_title("Join the Product Improvement Programme")
+    assert share_data_page.is_opened()
+    share_data_page.click_not_now()
+
+def test_device_credentials_page(driver):
+    device_credentials_page = DeviceCredentialsPage(driver).open()
+    device_credentials_page.wait_for_title("Store Your Keenetic Device Credentials")
+    assert device_credentials_page.is_opened()
+    device_credentials_page.click_next_default()
+
+def test_finish_setup_page(driver):
+    finish_setup_page = FinishSetupPage(driver).open()
+    finish_setup_page.wait_for_title("Finishing the Setup")
+    assert finish_setup_page.is_opened()
+    finish_setup_page.click_next_default()
