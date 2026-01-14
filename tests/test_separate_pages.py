@@ -8,6 +8,7 @@ from pages.connection_page import ConnectionPage
 from pages.schedule_updates_page import ScheduleUpdatesPage
 from pages.wifi_settings_page import WifiSettingsPage
 from pages.wifi_perf_page import WifiPerfPage
+from pages.extra_segments_page import ExtraSegmentsPage
 
 
 def test_welcome_page(driver):
@@ -15,6 +16,7 @@ def test_welcome_page(driver):
     assert welcome_page.is_wizard_page()
     welcome_page.wait_for_title("Welcome to the Initial Setup Wizard")
     assert welcome_page.is_opened()
+    welcome_page.click_next_default()
 
 def test_country_page(driver):
     country_page = CountryPage(driver).open()
@@ -22,6 +24,7 @@ def test_country_page(driver):
     country_page.wait_for_title("Choose Your Location")
     # TODO Add country and timezone selectors
     assert country_page.is_opened()
+    country_page.click_next_default()
 
 def test_password_page(driver):
     password_page = PasswordPage(driver).open()
@@ -73,3 +76,9 @@ def test_wifi_perf_page(driver):
     wifi_perf_page.wait_for_title("Optimize Wi-Fi Network Performance")
     assert wifi_perf_page.is_opened()
     wifi_perf_page.click_optimal()
+
+def test_extra_segments_page(driver):
+    extra_segments_page = ExtraSegmentsPage(driver).open()
+    extra_segments_page.wait_for_title("Create Additional Wi-Fi Networks")
+    assert extra_segments_page.is_opened()
+    extra_segments_page.click_chbox_guests()
