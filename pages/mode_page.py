@@ -15,4 +15,9 @@ class ModePage(BaseWizardPage):
     
     def click_router_mode(self):
         self.driver.find_element(*self.RADIO_ROUTER).click()
+
+    def click_next(self):
+        self.driver.find_element(*self.NEXT_BUTTON).click()
+        from .mode_option_page import ModeOptionPage
+        return ModeOptionPage(self.driver)
     
