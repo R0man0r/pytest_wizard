@@ -5,7 +5,10 @@ from pages.base_wizard_page import BaseWizardPage
 class WifiPerfPage(BaseWizardPage):
 
     PATH = "wifi-performance-settings"
-    RADIO_OPTIMAL = (By.XPATH, "//input[@type='radio' and @value='OPTIMAL']")
+    RADIO_OPTIMAL = (
+    By.XPATH,
+    "//label[.//div[contains(normalize-space(), 'Less interference')]]"
+    )
 
     def open(self):
         self.driver.get(self.BASE_URL + self.PATH)
@@ -13,6 +16,15 @@ class WifiPerfPage(BaseWizardPage):
         return self 
     
     def click_optimal(self):
-        self.driver.find_element(*self.RADIO_OPTIMAL).click()
+        self.wait.until(
+            EC.visibility_of_element_located(self.RADIO_OPTIMAL)
+            ).click()
+        
+
+    def click_next(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
+        self.driver.find_element(*self.NEXT_BUTTON).click()
+        from .extra_segments_page import ExtraSegmentsPage
+        return ExtraSegmentsPage(self.driver)
     
     

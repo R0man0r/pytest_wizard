@@ -15,3 +15,8 @@ class ModeOptionPage(BaseWizardPage):
     def click_eth_option(self):
         self.driver.find_element(*self.RADIO_ETH).click()
     
+    def click_next(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
+        self.driver.find_element(*self.NEXT_BUTTON).click()
+        from .schematic_page import SchematicPage
+        return SchematicPage(self.driver)

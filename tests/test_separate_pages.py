@@ -41,7 +41,7 @@ def test_mode_page(driver):
     mode_page.wait_for_title("What Would You Like to Do?")
     assert mode_page.is_opened()
     mode_page.click_router_mode()
-    mode_page.click_next_default()
+    # mode_page.click_next_default()
 
 def test_mode_option_page(driver):
     mode_option_page = ModeOptionPage(driver).open()

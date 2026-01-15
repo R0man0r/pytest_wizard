@@ -5,7 +5,10 @@ from pages.base_wizard_page import BaseWizardPage
 class ModePage(BaseWizardPage):
 
     PATH = "select-desired-function"
-    RADIO_ROUTER = (By.XPATH, "//input[@type='radio' and @value='router']")
+    RADIO_ROUTER_LABEL = (
+    By.XPATH,
+    "//label[.//div[contains(normalize-space(), 'Router Mode')]]"
+    )
 
     def open(self):
         self.driver.get(self.BASE_URL + self.PATH)
@@ -14,9 +17,12 @@ class ModePage(BaseWizardPage):
     
     
     def click_router_mode(self):
-        self.driver.find_element(*self.RADIO_ROUTER).click()
+        self.wait.until(
+        EC.visibility_of_element_located(self.RADIO_ROUTER_LABEL)
+        ).click()
 
     def click_next(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         self.driver.find_element(*self.NEXT_BUTTON).click()
         from .mode_option_page import ModeOptionPage
         return ModeOptionPage(self.driver)

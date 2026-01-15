@@ -23,6 +23,7 @@ class PasswordPage(BaseWizardPage):
         return self
     
     def click_next(self):
+        self.wait.until(EC.element_to_be_clickable(self.NEXT_BUTTON))
         self.driver.find_element(*self.NEXT_BUTTON).click()
         from .mode_page import ModePage
         return ModePage(self.driver)

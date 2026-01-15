@@ -15,4 +15,10 @@ class ShareDataPage(BaseWizardPage):
     
     def click_not_now(self):
         self.driver.find_element(*self.BTN_NOT_NOW).click()
+
+    def click_next(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
+        self.driver.find_element(*self.NEXT_BUTTON).click()
+        from .device_credentials_page import DeviceCredentialsPage
+        return DeviceCredentialsPage(self.driver)
     

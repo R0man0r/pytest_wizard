@@ -34,6 +34,7 @@ class CountryPage(BaseWizardPage):
         self.wait.until(EC.element_to_be_clickable(option)).click()
 
     def click_next(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         self.driver.find_element(*self.NEXT_BUTTON).click()
         from .password_page import PasswordPage
         return PasswordPage(self.driver)

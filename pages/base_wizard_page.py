@@ -22,6 +22,7 @@ class BaseWizardPage:
         self.wait.until(EC.text_to_be_present_in_element(self.TITLE, expected_text))
 
     def click_next_default(self):
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         self.driver.find_element(*self.NEXT_BUTTON).click()
 
     def is_opened(self):
