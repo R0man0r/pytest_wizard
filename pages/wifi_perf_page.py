@@ -21,10 +21,5 @@ class WifiPerfPage(BaseWizardPage):
             ).click()
         
 
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.driver.find_element(*self.NEXT_BUTTON).click()
-        from .extra_segments_page import ExtraSegmentsPage
-        return ExtraSegmentsPage(self.driver)
     
     

@@ -11,8 +11,3 @@ class WifiSettingsPage(BaseWizardPage):
         self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
         return self 
     
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.driver.find_element(*self.NEXT_BUTTON).click()
-        from .wifi_perf_page import WifiPerfPage
-        return WifiPerfPage(self.driver)

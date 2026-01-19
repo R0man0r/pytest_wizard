@@ -16,8 +16,3 @@ class ExtraSegmentsPage(BaseWizardPage):
         self.wait.until(EC.visibility_of_element_located(self.CHBOX_GUESTS))
         self.driver.find_element(*self.CHBOX_GUESTS).click()
     
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.driver.find_element(*self.NEXT_BUTTON).click()
-        from .share_data_page import ShareDataPage
-        return ShareDataPage(self.driver)

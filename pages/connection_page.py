@@ -15,9 +15,3 @@ class ConnectionPage(BaseWizardPage):
     
     def click_next_when_ready(self):
         self.wait.until(EC.element_to_be_clickable(self.NEXT_BUTTON)).click()
-
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.wait.until(EC.element_to_be_clickable(self.NEXT_BUTTON)).click()
-        from .schedule_updates_page import ScheduleUpdatesPage
-        return ScheduleUpdatesPage(self.driver)

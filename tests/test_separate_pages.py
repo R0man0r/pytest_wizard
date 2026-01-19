@@ -1,17 +1,19 @@
-from pages.welcome_page import WelcomePage
-from pages.country_page import CountryPage
-from pages.password_page import PasswordPage
-from pages.mode_page import ModePage
-from pages.mode_option_page import ModeOptionPage
-from pages.schematic_page import SchematicPage
-from pages.connection_page import ConnectionPage
-from pages.schedule_updates_page import ScheduleUpdatesPage
-from pages.wifi_settings_page import WifiSettingsPage
-from pages.wifi_perf_page import WifiPerfPage
-from pages.extra_segments_page import ExtraSegmentsPage
-from pages.share_data_page import ShareDataPage
-from pages.device_credentials_page import DeviceCredentialsPage
-from pages.finish_setup_page import FinishSetupPage
+from pages import (
+    WelcomePage,
+    CountryPage,
+    PasswordPage,
+    ModePage,
+    ModeOptionPage,
+    SchematicPage,
+    ConnectionPage,
+    ScheduleUpdatesPage,
+    WifiSettingsPage,
+    WifiPerfPage,
+    ExtraSegmentsPage,
+    ShareDataPage,
+    DeviceCredentialsPage,
+    FinishSetupPage
+)
 
 
 def test_welcome_page(driver):
@@ -25,9 +27,9 @@ def test_country_page(driver):
     country_page = CountryPage(driver).open()
     assert country_page.is_wizard_page()
     country_page.wait_for_title("Choose Your Location")
-    # TODO Add country and timezone selectors
     assert country_page.is_opened()
-    country_page.click_next_default()
+    country_page.select_country("Russia")
+    # country_page.click_next_default()
 
 def test_password_page(driver):
     password_page = PasswordPage(driver).open()
@@ -41,7 +43,7 @@ def test_mode_page(driver):
     mode_page.wait_for_title("What Would You Like to Do?")
     assert mode_page.is_opened()
     mode_page.click_router_mode()
-    # mode_page.click_next_default()
+    mode_page.click_next_default()
 
 def test_mode_option_page(driver):
     mode_option_page = ModeOptionPage(driver).open()

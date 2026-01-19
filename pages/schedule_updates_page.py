@@ -15,10 +15,3 @@ class ScheduleUpdatesPage(BaseWizardPage):
     def click_chbox_all_day(self):
         self.wait.until(EC.visibility_of_element_located(self.CHBOX_ALL_DAY))
         self.driver.find_element(*self.CHBOX_ALL_DAY).click()
-
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.driver.find_element(*self.NEXT_BUTTON).click()
-        from .wifi_settings_page import WifiSettingsPage
-        return WifiSettingsPage(self.driver)
-    

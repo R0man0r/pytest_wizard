@@ -20,10 +20,3 @@ class ModePage(BaseWizardPage):
         self.wait.until(
         EC.visibility_of_element_located(self.RADIO_ROUTER_LABEL)
         ).click()
-
-    def click_next(self):
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        self.driver.find_element(*self.NEXT_BUTTON).click()
-        from .mode_option_page import ModeOptionPage
-        return ModeOptionPage(self.driver)
-    
