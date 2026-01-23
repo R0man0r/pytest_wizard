@@ -7,10 +7,6 @@ class ExtraSegmentsPage(BaseWizardPage):
     PATH = "select-extra-segments"
     CHBOX_GUESTS = (By.XPATH, "//label[normalize-space()='Guests Network']")
 
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self 
     
     def click_chbox_guests(self):
         self.wait.until(EC.visibility_of_element_located(self.CHBOX_GUESTS))

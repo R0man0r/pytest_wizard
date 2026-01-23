@@ -7,10 +7,6 @@ class SchematicPage(BaseWizardPage):
     PATH = "scenario-schematic"
     NEXT_BUTTON = (By.XPATH, "//button[contains(., 'Confirm')]")
 
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self 
     
     
     

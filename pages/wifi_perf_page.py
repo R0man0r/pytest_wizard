@@ -9,11 +9,6 @@ class WifiPerfPage(BaseWizardPage):
     By.XPATH,
     "//label[.//div[contains(normalize-space(), 'Less interference')]]"
     )
-
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self 
     
     def click_optimal(self):
         self.wait.until(

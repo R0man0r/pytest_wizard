@@ -7,8 +7,4 @@ class WelcomePage(BaseWizardPage):
     PATH = "welcome"
     NEXT_BUTTON = (By.XPATH, "//button[contains(., 'Start')]")
 
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self
     

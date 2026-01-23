@@ -10,10 +10,6 @@ class ModePage(BaseWizardPage):
     "//label[.//div[contains(normalize-space(), 'Router Mode')]]"
     )
 
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self
     
     
     def click_router_mode(self):

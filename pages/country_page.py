@@ -17,10 +17,6 @@ class CountryPage(BaseWizardPage):
         "/ancestor::mat-form-field//mat-select"
     )
 
-    def open(self):
-        self.driver.get(self.BASE_URL + self.PATH)
-        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
-        return self
 
     
     def select_country(self, country: str):

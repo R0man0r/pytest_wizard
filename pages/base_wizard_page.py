@@ -11,6 +11,11 @@ class BaseWizardPage:
     def __init__(self, driver, timeout=10):
         self.driver = driver
         self.wait = WebDriverWait(driver, timeout)
+    
+    def open(self):
+        self.driver.get(self.BASE_URL + self.PATH)
+        self.wait.until(EC.visibility_of_element_located(self.NEXT_BUTTON))
+        return self
 
     def current_url(self):
         return self.driver.current_url
